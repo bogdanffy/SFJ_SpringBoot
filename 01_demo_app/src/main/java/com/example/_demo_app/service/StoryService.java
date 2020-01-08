@@ -45,7 +45,6 @@ public class StoryService {
 
     public List<Story> getStoriesByName(String name) {
         //List<Story> storiesByName = storyRepository.findAllByBloggerNameIgnoreCaseOrderByPostedDesc(name);
-
         List<Story> storiesByName = storyRepository.findByBlogger(name);
 
         return storiesByName;

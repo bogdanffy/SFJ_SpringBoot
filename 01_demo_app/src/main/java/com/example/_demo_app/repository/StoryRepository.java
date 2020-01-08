@@ -21,6 +21,6 @@ public interface StoryRepository extends CrudRepository<Story, Long> {
     //SELECT * FROM STORIES LEFT JOIN BLOGGER WHERE BLOGGER.name LIKE :name;
     List<Story> findAllByBloggerNameIgnoreCaseOrderByPostedDesc(String name);
 
-    @Query(value = "SELECT * FROM STORIES s LEFT JOIN BLOGGER b WHERE UPPER(b.name) LIKE UPPER(:name)", nativeQuery = true)
+    @Query(value = "SELECT * FROM STORIES s LEFT JOIN BLOGGER b ON s.blogger_id = b.id  WHERE UPPER(b.name) LIKE UPPER(:name) ORDER BY posted DESC", nativeQuery = true)
     List<Story> findByBlogger(@Param("name") String name);
 }

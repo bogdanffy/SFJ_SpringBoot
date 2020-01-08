@@ -2,6 +2,7 @@ package com.example._demo_app.controller;
 
 import com.example._demo_app.service.StoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -27,6 +28,7 @@ public class HomeController {
         return "stories";
     }
 
+    //@Secured({"ROLE_USER", "ROLE_ADMIN"})
     @RequestMapping("title/{title}")
     public String searchForUser(@PathVariable(value = "title") String title, Model model) throws Exception {
         if(title.equals("null")){
@@ -37,6 +39,7 @@ public class HomeController {
         return "story";
     }
 
+    //@Secured({"ROLE_USER", "ROLE_ADMIN"})
     @RequestMapping("newstory")
     public String showNewestStory(Model model){
         model.addAttribute("pageTitle", "A legfrissebb történet");

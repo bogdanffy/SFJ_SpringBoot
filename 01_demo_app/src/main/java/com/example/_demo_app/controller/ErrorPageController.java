@@ -41,6 +41,11 @@ public class ErrorPageController implements ErrorController {
             return "404";
         }
 
+        // Ha 403-es hibát kapunk, azt külön is kezelhetjük
+        if(error.get("status").toString().equals("403")){
+            return "403";
+        }
+
         return "detailedError";
     }
 
